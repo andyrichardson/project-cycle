@@ -27,7 +27,7 @@
     "ios": "react-native-scripts-ts ios",
     "test": "jest",
     "lint": "tslint --project .",
-    "formatting": "prettier-check ./**/*.json ./**/*.tsx"
+    "formatting": "prettier-check ./**/*.json ./**/*.tsx ./**/*.md"
   },
   "jest": {
     "globals": {
@@ -35,7 +35,14 @@
         "useBabelrc": true
       }
     },
-    "moduleFileExtensions": ["ts", "tsx", "js", "jsx", "json", "node"],
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ],
     "preset": "jest-expo",
     "testMatch": [
       "**/__tests__/**/*.[tj]s?(x)",
