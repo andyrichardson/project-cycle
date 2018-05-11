@@ -6,6 +6,7 @@
     "@types/jest": "^22.2.2",
     "@types/react": "^16.1.0",
     "@types/react-native": "^0.52.21",
+    "@types/react-navigation": "^1.5.11",
     "@types/react-test-renderer": "^16.0.0",
     "jest-expo": "26.0.0",
     "prettier": "^1.12.1",
@@ -56,6 +57,8 @@
   "dependencies": {
     "expo": "^26.0.0",
     "react": "16.3.0-alpha.1",
-    "react-native": "0.54.0"
+    "react-native": "0.54.0",
+    "react-navigation": "^2.0.1",
+    "styled-components": "^3.2.6"
   }
 }
