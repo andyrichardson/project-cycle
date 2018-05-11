@@ -27,7 +27,8 @@
     "ios": "react-native-scripts-ts ios",
     "test": "jest",
     "lint": "tslint --project .",
-    "formatting": "prettier-check ./**/*.json ./**/*.tsx ./**/*.md"
+    "formatting": "prettier-check ./**/*.json ./**/*.tsx ./**/*.md",
+    "postinstall": "config/set-target.sh"
   },
   "jest": {
     "globals": {
