@@ -11,10 +11,10 @@ import styled from 'styled-components/native';
 import { AuthStore } from './stores';
 
 interface Props {
-  AuthStore: AuthStore;
+  authStore: AuthStore;
 }
 
-@inject('AuthStore')
+@inject('authStore')
 @observer
 export class Login extends React.Component<Props, any> {
   public render() {
@@ -22,16 +22,16 @@ export class Login extends React.Component<Props, any> {
       <PageView>
         <LoginInput
           placeholder="Email address"
-          onChangeText={text => this.props.AuthStore.setEmail(text)}
+          onChangeText={text => this.props.authStore.setEmail(text)}
         />
         <LoginInput
           placeholder="Password"
           secureTextEntry={true}
-          onChangeText={text => this.props.AuthStore.setPassword(text)}
+          onChangeText={text => this.props.authStore.setPassword(text)}
         />
 
-        <LoginButton>
-          <ButtonText>{this.props.AuthStore.email}</ButtonText>
+        <LoginButton onPress={() => this.props.authStore.login()}>
+          <ButtonText>Login</ButtonText>
         </LoginButton>
       </PageView>
     );

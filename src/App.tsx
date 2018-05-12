@@ -1,11 +1,11 @@
-import { Provider } from 'mobx-react';
+import { observer, Provider } from 'mobx-react';
 import * as React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 import { Login } from './Login';
 import { AuthStore } from './stores';
 
-const Root = StackNavigator({
+const SignedOut = StackNavigator({
   Login: {
     navigationOptions: {
       header: null
@@ -15,14 +15,19 @@ const Root = StackNavigator({
 });
 
 const stores = {
-  AuthStore: new AuthStore()
+  authStore: new AuthStore()
 };
 
+@observer
 export default class App extends React.Component<{}> {
   public render() {
     return (
       <Provider {...stores}>
-        <Root />
+        {stores.authStore.isAuthenticated ? (
+          <Text>LoggedIn</Text>
+        ) : (
+          <SignedOut />
+        )}
       </Provider>
     );
   }
