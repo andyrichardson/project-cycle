@@ -1,3 +1,4 @@
+import { inject, observer } from 'mobx-react';
 import * as React from 'react';
 import {
   StyleSheet,
@@ -7,39 +8,33 @@ import {
   View
 } from 'react-native';
 import styled from 'styled-components/native';
+import { AuthStore } from './stores';
 
-type Props = any;
-interface State {
-  email: string;
-  password: string;
+interface Props {
+  AuthStore: AuthStore;
 }
-export class Login extends React.Component<Props, State> {
-  public state: State = {
-    email: '',
-    password: ''
-  };
 
+@inject('AuthStore')
+@observer
+export class Login extends React.Component<Props, any> {
   public render() {
     return (
       <PageView>
         <LoginInput
           placeholder="Email address"
-          onChangeText={text => this.setState({ email: text })}
+          onChangeText={text => this.props.AuthStore.setEmail(text)}
         />
         <LoginInput
           placeholder="Password"
-          onChangeText={text => this.setState({ email: text })}
+          secureTextEntry={true}
+          onChangeText={text => this.props.AuthStore.setPassword(text)}
         />
 
         <LoginButton>
-          <ButtonText>Login</ButtonText>
+          <ButtonText>{this.props.AuthStore.email}</ButtonText>
         </LoginButton>
       </PageView>
     );
-  }
-
-  private submit() {
-    return true;
   }
 }
 
@@ -51,16 +46,17 @@ const PageView = styled.View`
 `;
 
 const LoginInput = styled.TextInput`
-  height: 50px;
+  color: #fff;
   margin: 10px 0;
+  padding: 10px;
   width: 100%;
 `;
 
-const LoginButton = styled.TouchableNativeFeedback`
+const LoginButton = styled.TouchableHighlight`
   align-items: center;
   background-color: #c00;
-  border-radius: 2000px;
   padding: 15px;
+  width: 100%;
 `;
 
 const ButtonText = styled.Text`
