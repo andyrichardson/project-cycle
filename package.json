@@ -49,7 +49,9 @@
       "node"
     ],
     "preset": "jest-expo",
-    "setupFiles": ["./config/setup.ts"],
+    "setupFiles": [
+      "./config/setup.ts"
+    ],
     "testMatch": [
       "**/__tests__/**/*.[tj]s?(x)",
       "**/?(*.)(spec|test).[tj]s?(x)"

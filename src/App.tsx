@@ -3,6 +3,7 @@ import * as React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 import { Login } from './Login';
+import { Map } from './Map';
 import { AuthStore } from './stores';
 
 const SignedOut = StackNavigator({
@@ -23,11 +24,12 @@ export default class App extends React.Component<{}> {
   public render() {
     return (
       <Provider {...stores}>
-        {stores.authStore.isAuthenticated ? (
+        {/* {stores.authStore.isAuthenticated ? (
           <Text>LoggedIn</Text>
         ) : (
           <SignedOut />
-        )}
+        )} */}
+        <Map />
       </Provider>
     );
   }

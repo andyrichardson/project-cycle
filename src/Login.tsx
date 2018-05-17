@@ -1,12 +1,5 @@
 import { inject, observer } from 'mobx-react';
 import * as React from 'react';
-import {
-  StyleSheet,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View
-} from 'react-native';
 import styled from 'styled-components/native';
 import { AuthStore } from './stores';
 
