@@ -15,13 +15,14 @@ export class PointStore {
   @action
   public fetchAll() {
     this.fetching = true;
-
     return fetch('https://api.tfl.gov.uk/bikepoint')
       .then(resp => resp.json())
       .then(json =>
         json.map(point => {
           const item: any = {
             id: point.id,
+            lat: point.lat,
+            lon: point.lon,
             name: point.commonName,
             url: point.url
           };
@@ -30,6 +31,7 @@ export class PointStore {
             this.parseAdditionalData(property, item)
           );
 
+          console.log(item);
           return item as BikePoint;
         })
       )
@@ -41,7 +43,7 @@ export class PointStore {
 
   @computed
   public get points() {
-    return this.pPoints;
+    return this.pPoints || [];
   }
 
   @computed

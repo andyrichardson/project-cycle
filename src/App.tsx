@@ -4,7 +4,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 import { Login } from './Login';
 import { Map } from './Map';
-import { AuthStore } from './stores';
+import { AuthStore, PointStore } from './stores';
 
 const SignedOut = StackNavigator({
   Login: {
@@ -16,7 +16,8 @@ const SignedOut = StackNavigator({
 });
 
 const stores = {
-  authStore: new AuthStore()
+  authStore: new AuthStore(),
+  pointStore: new PointStore()
 };
 
 @observer
@@ -32,5 +33,9 @@ export default class App extends React.Component<{}> {
         <Map />
       </Provider>
     );
+  }
+
+  public componentDidMount() {
+    stores.pointStore.fetchAll();
   }
 }

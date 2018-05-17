@@ -1,9 +1,10 @@
-import { observer, Provider } from 'mobx-react';
+import { inject, observer, Provider } from 'mobx-react';
 import * as React from 'react';
 import { Text } from 'react-native';
-import MapView from 'react-native-maps';
+import MapView, { Marker } from 'react-native-maps';
 import styled from 'styled-components/native';
 
+@inject('pointStore')
 @observer
 export class Map extends React.Component<{}> {
   public render() {
@@ -16,7 +17,11 @@ export class Map extends React.Component<{}> {
           right: 0,
           bottom: 0
         }}
-      />
+      >
+        {this.props.pointStore.points.map(point => (
+          <Marker coordinate={{ latitude: point.lat, longitude: point.lon }} />
+        ))}
+      </MapView>
     );
   }
 }
