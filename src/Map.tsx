@@ -3,10 +3,11 @@ import * as React from 'react';
 import { Text } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
 import styled from 'styled-components/native';
+import { PointStore } from './stores';
 
 @inject('pointStore')
 @observer
-export class Map extends React.Component<{}> {
+export class Map extends React.Component<{ pointStore?: PointStore }> {
   public render() {
     return (
       <MapView
@@ -19,7 +20,10 @@ export class Map extends React.Component<{}> {
         }}
       >
         {this.props.pointStore.points.map(point => (
-          <Marker coordinate={{ latitude: point.lat, longitude: point.lon }} />
+          <Marker
+            key={point.id}
+            coordinate={{ latitude: point.lat, longitude: point.lon }}
+          />
         ))}
       </MapView>
     );

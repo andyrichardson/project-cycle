@@ -106,6 +106,8 @@ export class PointStore {
 
 interface BikePoint {
   id: string;
+  lat: number;
+  lon: number;
   url: string;
   name: string;
   terminal: number;
