@@ -27,7 +27,7 @@
   "scripts": {
     "start": "react-native-scripts-ts start",
     "eject": "react-native-scripts-ts eject",
-    "android": "react-native-scripts-ts android",
+    "android": "react-native run-android --config $(pwd)/rn-cli.config.js",
     "ios": "react-native-scripts-ts ios",
     "test": "jest",
     "lint": "tslint --project .",
