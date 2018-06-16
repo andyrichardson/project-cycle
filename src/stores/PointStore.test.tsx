@@ -4,6 +4,8 @@ import * as ReactTestUtils from 'react-dom/test-utils';
 import * as TestRenderer from 'react-test-renderer';
 import { PointStore } from './index';
 
+declare const fetch: jest.Mock;
+
 it('instantitates without crashing', () => {
   const pointStore = new PointStore();
 });
@@ -29,6 +31,9 @@ describe('fetch points', () => {
 
   beforeEach(() => {
     pointStore = new PointStore();
+    fetch.mockResolvedValue({
+      json: () => require('./__api__/bikepoint.json')
+    });
   });
 
   it('fetches points and resolves', () => {
