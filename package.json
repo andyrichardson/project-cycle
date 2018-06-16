@@ -60,7 +60,10 @@
     ],
     "transform": {
       "^.+\\.tsx?$": "ts-jest"
-    }
+    },
+    "transformIgnorePatterns": [
+      "node_modules/(?!(jest-)?react-native|react-navigation)"
+    ]
   },
   "dependencies": {
     "expo": "^27.0.1",
