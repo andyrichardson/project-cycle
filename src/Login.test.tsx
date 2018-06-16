@@ -1,3 +1,4 @@
+import { expect } from 'chai';
 import * as React from 'react';
 import * as ReactTestUtils from 'react-dom/test-utils';
 import * as TestRenderer from 'react-test-renderer';
@@ -36,7 +37,7 @@ describe('input events', () => {
 
     const text = 'testtext';
     input.instance.props.onChangeText(text);
-    expect(authStore.setEmail.mock.calls).toEqual([[text]]);
+    expect(authStore.setEmail.mock.calls).to.deep.equal([[text]]);
   });
 
   it('sends password input to authStore', () => {
@@ -49,7 +50,7 @@ describe('input events', () => {
 
     const text = 'passpass';
     input.instance.props.onChangeText(text);
-    expect(authStore.setPassword.mock.calls).toEqual([[text]]);
+    expect(authStore.setPassword.mock.calls).to.deep.equal([[text]]);
   });
 
   // it('triggers submission on click', () => {

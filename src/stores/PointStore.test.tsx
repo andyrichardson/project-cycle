@@ -1,8 +1,9 @@
+import { expect } from 'chai';
 import * as React from 'react';
 import * as ReactTestUtils from 'react-dom/test-utils';
 import * as TestRenderer from 'react-test-renderer';
-
 import { PointStore } from './index';
+
 it('instantitates without crashing', () => {
   const pointStore = new PointStore();
 });
@@ -15,11 +16,11 @@ describe('initial state', () => {
   });
 
   it('is not fetching', () => {
-    expect(pointStore.isFetching).toBe(false);
+    expect(pointStore.isFetching).to.equal(false);
   });
 
   it('has no results', () => {
-    expect(pointStore.points).toBe([]);
+    expect(pointStore.points).to.deep.equal([]);
   });
 });
 
@@ -39,13 +40,13 @@ describe('fetch points', () => {
       pointStore
         .fetchAll()
         // @ts-ignore
-        .then(() => expect(pointStore.fetching).toBe(false))
+        .then(() => expect(pointStore.fetching).to.equal(false))
     );
   });
 
   it('fetches points and provides response', () => {
     return pointStore
       .fetchAll()
-      .then(() => expect(pointStore.points.length).toBeGreaterThanOrEqual(10));
+      .then(() => expect(pointStore.points.length).to.be.at.least(10));
   });
 });
