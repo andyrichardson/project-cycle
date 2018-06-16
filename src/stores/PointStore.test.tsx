@@ -19,7 +19,7 @@ describe('initial state', () => {
   });
 
   it('has no results', () => {
-    expect(pointStore.points).toBe(undefined);
+    expect(pointStore.points).toBe([]);
   });
 });
 

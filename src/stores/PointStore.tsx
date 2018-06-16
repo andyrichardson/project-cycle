@@ -31,7 +31,6 @@ export class PointStore {
             this.parseAdditionalData(property, item)
           );
 
-          console.log(item);
           return item as BikePoint;
         })
       )
