@@ -1,3 +1,4 @@
+import { expect } from 'chai';
 import * as React from 'react';
 import * as ReactTestUtils from 'react-dom/test-utils';
 import * as TestRenderer from 'react-test-renderer';
@@ -15,16 +16,16 @@ describe('initial state', () => {
   });
 
   it('returns blank email', () => {
-    expect(authStore.email).toEqual('');
+    expect(authStore.email).to.equal('');
   });
 
   it('returns a blank password', () => {
     // @ts-ignore
-    expect(authStore.password).toEqual('');
+    expect(authStore.password).to.equal('');
   });
 
   it('is not authenticated', () => {
-    expect(authStore.isAuthenticated).toEqual(false);
+    expect(authStore.isAuthenticated).to.equal(false);
   });
 });
 
@@ -39,7 +40,7 @@ describe('functions', () => {
     const email = 'testemail@email.com';
     authStore.setEmail(email);
 
-    expect(authStore.email).toEqual(email);
+    expect(authStore.email).to.equal(email);
   });
 
   it('sets password', () => {
@@ -47,6 +48,6 @@ describe('functions', () => {
     authStore.setPassword(password);
 
     // @ts-ignore
-    expect(authStore.password).toEqual(password);
+    expect(authStore.password).to.equal(password);
   });
 });

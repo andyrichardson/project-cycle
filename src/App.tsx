@@ -3,7 +3,8 @@ import * as React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 import { Login } from './Login';
-import { AuthStore } from './stores';
+import { Map } from './Map';
+import { AuthStore, PointStore } from './stores';
 
 const SignedOut = StackNavigator({
   Login: {
@@ -15,7 +16,8 @@ const SignedOut = StackNavigator({
 });
 
 const stores = {
-  authStore: new AuthStore()
+  authStore: new AuthStore(),
+  pointStore: new PointStore()
 };
 
 @observer
@@ -23,12 +25,17 @@ export default class App extends React.Component<{}> {
   public render() {
     return (
       <Provider {...stores}>
-        {stores.authStore.isAuthenticated ? (
+        {/* {stores.authStore.isAuthenticated ? (
           <Text>LoggedIn</Text>
         ) : (
           <SignedOut />
-        )}
+        )} */}
+        <Map />
       </Provider>
     );
+  }
+
+  public componentDidMount() {
+    stores.pointStore.fetchAll();
   }
 }

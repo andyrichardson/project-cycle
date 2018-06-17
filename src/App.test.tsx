@@ -1,3 +1,4 @@
+import { expect } from 'chai';
 import * as React from 'react';
 import * as ReactTestUtils from 'react-dom/test-utils';
 import * as TestRenderer from 'react-test-renderer';
@@ -6,7 +7,7 @@ import { Login } from './Login';
 
 it('renders without crashing', () => {
   const rendered = TestRenderer.create(<App />).toJSON();
-  expect(rendered).toBeTruthy();
+  expect(rendered).to.be.an('object');
 });
 
 it('directs to Login page on startup', () => {
