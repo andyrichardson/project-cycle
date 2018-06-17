@@ -10,6 +10,14 @@ Install dependencies
 
 ## Usage
 
-Run development build
+Start react native webserver
 
     npm start
+
+Run on android
+
+    npm run android
+
+Run on iOS
+
+    npm run ios

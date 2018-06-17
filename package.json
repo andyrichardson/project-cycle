@@ -27,10 +27,9 @@
   },
   "main": "./node_modules/react-native-scripts-ts/build/bin/crna-entry.js",
   "scripts": {
-    "start": "react-native-scripts-ts start",
-    "eject": "react-native-scripts-ts eject",
+    "start": "react-native start",
     "android": "react-native run-android --config $(pwd)/rn-cli.config.js",
-    "ios": "react-native-scripts-ts ios",
+    "ios": "react-native run-ios --config $(pwd)/rn-cli.config.js",
     "test": "jest",
     "lint": "tslint --project .",
     "formatting": "prettier-check ./**/*.json ./**/*.tsx ./**/*.md",
@@ -66,7 +65,6 @@
     ]
   },
   "dependencies": {
-    "expo": "^27.0.1",
     "mobx": "^4.2.1",
     "mobx-react": "^5.1.2",
     "react": "16.3.2",
