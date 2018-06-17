@@ -1,41 +1,29 @@
-import { observer, Provider } from 'mobx-react';
 import * as React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
 import { StackNavigator } from 'react-navigation';
-import { Login } from './Login';
-import { Map } from './Map';
-import { AuthStore, PointStore } from './stores';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import { Map } from './containers';
+import { rootReducer } from './reducers';
 
-const SignedOut = StackNavigator({
-  Login: {
-    navigationOptions: {
-      header: null
-    },
-    screen: Login
-  }
-});
+// import { Login } from './Login';
 
-const stores = {
-  authStore: new AuthStore(),
-  pointStore: new PointStore()
-};
+// const SignedOut = StackNavigator({
+//   Login: {
+//     navigationOptions: {
+//       header: null
+//     },
+//     screen: Login
+//   }
+// });
 
-@observer
+const store = createStore(rootReducer);
+
 export default class App extends React.Component<{}> {
   public render() {
     return (
-      <Provider {...stores}>
-        {/* {stores.authStore.isAuthenticated ? (
-          <Text>LoggedIn</Text>
-        ) : (
-          <SignedOut />
-        )} */}
+      <Provider store={store}>
         <Map />
       </Provider>
     );
-  }
-
-  public componentDidMount() {
-    stores.pointStore.fetchAll();
   }
 }
