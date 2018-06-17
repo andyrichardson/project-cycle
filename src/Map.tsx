@@ -23,6 +23,7 @@ export class Map extends React.Component<{ pointStore?: PointStore }> {
           right: 0,
           top: 0
         }}
+        provider={'google'}
         showsCompass={true}
         initialRegion={this.region}
         loadingEnabled={true}
@@ -73,7 +74,3 @@ export class Map extends React.Component<{ pointStore?: PointStore }> {
     this.error = error;
   }
 }
-
-const PageView = styled.View``;
-
-// const MapView = styled.MapView``;

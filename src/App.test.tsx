@@ -7,7 +7,7 @@ import { Login } from './Login';
 
 it('renders without crashing', () => {
   const rendered = TestRenderer.create(<App />).toJSON();
-  expect(rendered).to.equal(true);
+  expect(rendered).to.be.an('object');
 });
 
 it('directs to Login page on startup', () => {
