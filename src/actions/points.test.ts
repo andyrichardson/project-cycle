@@ -13,15 +13,15 @@ describe('updatePoints', () => {
   });
 
   it('returns a function', () => {
-    const result = updatePoints();
+    const result = updatePoints(jest.fn());
 
-    expect(result).to.be.a('function');
+    expect(result).to.be.a('promise');
   });
 
   it('returned function calls dispatch', () => {
     const fn = jest.fn();
 
-    const f = updatePoints()(fn);
+    const f = updatePoints(fn);
     f.catch(() => true);
 
     expect(fn.mock.calls.length).to.equal(1);
@@ -29,7 +29,7 @@ describe('updatePoints', () => {
 
   it('returned function calls fetch', () => {
     // @ts-ignore
-    const f = updatePoints()(() => true);
+    const f = updatePoints(jest.fn());
     f.catch(() => true);
 
     expect(fetch.mock.calls[0][0]).to.be.a('string');

@@ -1,7 +1,7 @@
 import { FETCH_POINTS, RECEIVE_POINTS } from '../actions';
 import { createReducer } from './create';
 
-const receivePoints = (
+export const receivePoints = (
   state: PointState,
   action: RecievePointsAction
 ): PointState => {
@@ -14,7 +14,7 @@ const receivePoints = (
   };
 };
 
-const fetchPoints = (state: PointState): PointState => {
+export const fetchPoints = (state: PointState): PointState => {
   return {
     ...state,
     error: false,
