@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { StackNavigator } from 'react-navigation';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+import { applyMiddleware, createStore } from 'redux';
+import thunk from 'redux-thunk';
 import { Map } from './containers';
 import { rootReducer } from './reducers';
 
@@ -16,7 +17,7 @@ import { rootReducer } from './reducers';
 //   }
 // });
 
-const store = createStore(rootReducer);
+const store = createStore(rootReducer, applyMiddleware(thunk));
 
 export default class App extends React.Component<{}> {
   public render() {

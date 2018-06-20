@@ -68,9 +68,12 @@
     "react": "16.3.2",
     "react-native": "0.55.4",
     "react-native-maps": "^0.21.0",
+    "react-native-maps-super-cluster": "^1.4.1",
+    "react-native-permissions": "^1.1.1",
     "react-navigation": "^2.3.1",
     "react-redux": "^5.0.7",
     "redux": "^4.0.0",
+    "redux-thunk": "^2.3.0",
     "styled-components": "^3.2.6"
   }
 }

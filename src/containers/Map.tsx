@@ -6,8 +6,7 @@ import { MapComponent } from '../components';
 const mapStateToProps = (state: ApplicationState) => ({ points: state.points });
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
-  // @ts-ignore
-  updatePoints: () => dispatch(updatePoints())
+  updatePoints: () => updatePoints(dispatch)
 });
 
 export const Map = connect(

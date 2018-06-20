@@ -4,7 +4,7 @@ export const UPDATE_POINTS = 'UPDATE_POINTS';
 export const FETCH_POINTS = 'FETCH_POINTS';
 export const RECEIVE_POINTS = 'RECEIVE_POINTS';
 
-export const updatePoints = () => (dispatch: Dispatch) => {
+export const updatePoints = (dispatch: Dispatch) => {
   dispatch(fetchPoints());
 
   return fetch('https://api.tfl.gov.uk/bikepoint')
@@ -29,6 +29,8 @@ export const receivePoints = (json: any): RecievePointsAction => {
     point.additionalProperties.forEach(property =>
       parseAdditionalData(property, item)
     );
+
+    return item;
   });
 
   return {
