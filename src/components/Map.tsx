@@ -4,25 +4,17 @@ import MapView from 'react-native-maps-super-cluster';
 import Permissions from 'react-native-permissions';
 import styled from 'styled-components/native';
 
-interface State {
-  error: string;
-  latitude: number;
-  longitude: number;
-}
-
-interface Props {
-  points: PointState;
-  updatePoints: () => any;
-}
-
-export class MapComponent extends React.Component<Props, State> {
-  public state: State = {
+export class MapComponent extends React.Component<
+  MapComponentProps,
+  MapComponentState
+> {
+  public state: MapComponentState = {
     error: null,
     latitude: undefined,
     longitude: undefined
   };
 
-  constructor(props: any) {
+  constructor(props: MapComponentProps) {
     super(props);
     this.props.updatePoints();
   }
