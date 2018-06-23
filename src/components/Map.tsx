@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Marker } from 'react-native-maps';
 import MapView from 'react-native-maps-super-cluster';
+import PercentageCircle from 'react-native-percentage-circle';
 import Permissions from 'react-native-permissions';
 import styled from 'styled-components/native';
 
@@ -84,11 +85,24 @@ export class MapComponent extends React.Component<
   }
 
   private renderMarker(point: BikePoint) {
+    const percent = (point.bikes.available / point.bikes.total) * 100;
+
     return (
       <Marker key={point.id} coordinate={point.location}>
         <MarkerView>
           <MarkerImage source={require('../assets/images/marker.png')} />
-          <MarkerText>{point.bikes.available}</MarkerText>
+          <PercentageView>
+            <PercentageCircle
+              borderWidth={3}
+              radius={15.5}
+              percent={percent}
+              innerColor={'#333'}
+              bgcolor={'#333'}
+              color={'#f00'}
+            >
+              <MarkerText>{point.bikes.available}</MarkerText>
+            </PercentageCircle>
+          </PercentageView>
         </MarkerView>
       </Marker>
     );
@@ -149,9 +163,11 @@ const MarkerImage = styled.Image`
 const MarkerText = styled.Text`
   color: #fff;
   font-size: 12px;
-  left: 0;
-  position: absolute;
-  right: 0;
   text-align: center;
-  top: 17px;
+`;
+
+const PercentageView = styled.View`
+  position: absolute;
+  left: 19.5px;
+  top: 10.5px;
 `;
