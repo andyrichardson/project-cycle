@@ -7,8 +7,10 @@ interface PointState {
 
 interface BikePoint {
   id: string;
-  lat: number;
-  lon: number;
+  location: {
+    latitude: number;
+    longitude: number;
+  };
   url: string;
   name: string;
   terminal: number;

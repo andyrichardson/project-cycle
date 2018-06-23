@@ -20,8 +20,7 @@ export const receivePoints = (json: any): RecievePointsAction => {
   const data = json.map(point => {
     const item: any = {
       id: point.id,
-      lat: point.lat,
-      lon: point.lon,
+      location: { latitude: point.lat, longitude: point.lon },
       name: point.commonName,
       url: point.url
     };

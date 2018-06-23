@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Marker } from 'react-native-maps';
 import MapView from 'react-native-maps-super-cluster';
+import PercentageCircle from 'react-native-percentage-circle';
 import Permissions from 'react-native-permissions';
 import styled from 'styled-components/native';
 
@@ -77,13 +78,34 @@ export class MapComponent extends React.Component<
 
   private get data() {
     return this.props.points.results.map((point, index) => ({
+      bikes: point.bikes,
       id: index,
-      location: { latitude: point.lat, longitude: point.lon }
+      location: point.location
     }));
   }
 
-  private renderMarker(point) {
-    return <Marker key={point.id} coordinate={point.location} />;
+  private renderMarker(point: BikePoint) {
+    const percent = (point.bikes.available / point.bikes.total) * 100;
+
+    return (
+      <Marker key={point.id} coordinate={point.location}>
+        <MarkerView>
+          <MarkerImage source={require('../assets/images/marker.png')} />
+          <PercentageView>
+            <PercentageCircle
+              borderWidth={3}
+              radius={15.5}
+              percent={percent}
+              innerColor={'#333'}
+              bgcolor={'#333'}
+              color={'#f00'}
+            >
+              <MarkerText>{point.bikes.available}</MarkerText>
+            </PercentageCircle>
+          </PercentageView>
+        </MarkerView>
+      </Marker>
+    );
   }
 
   private renderCluster(cluster, onPress) {
@@ -129,4 +151,23 @@ const ClusterText = styled.Text`
   color: #f00;
   font-size: 12px;
   font-weight: 600;
+`;
+
+const MarkerView = styled.View``;
+
+const MarkerImage = styled.Image`
+  width: 70px;
+  height: 70px;
+`;
+
+const MarkerText = styled.Text`
+  color: #fff;
+  font-size: 12px;
+  text-align: center;
+`;
+
+const PercentageView = styled.View`
+  position: absolute;
+  left: 19.5px;
+  top: 10.5px;
 `;
