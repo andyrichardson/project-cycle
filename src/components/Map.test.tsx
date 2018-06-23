@@ -146,6 +146,6 @@ describe('markers', () => {
 
     // @ts-ignore
     const marker = instance.renderMarker(props.points.results[0]);
-    expect(marker.type).to.equal('marker');
+    expect(marker.type).to.be.a('function');
   });
 });
