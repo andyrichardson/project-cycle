@@ -9,6 +9,10 @@ interface MapComponentProps {
   updatePoints: () => any;
 }
 
+interface MarkerComponentProps {
+  point: BikePoint;
+}
+
 interface PermissionsMock {
   check: jest.Mock;
   request: jest.Mock;

@@ -4,6 +4,7 @@ import MapView from 'react-native-maps-super-cluster';
 import PercentageCircle from 'react-native-percentage-circle';
 import Permissions from 'react-native-permissions';
 import styled from 'styled-components/native';
+import { MarkerComponent } from './Marker';
 
 export class MapComponent extends React.Component<
   MapComponentProps,
@@ -86,26 +87,7 @@ export class MapComponent extends React.Component<
 
   private renderMarker(point: BikePoint) {
     const percent = (point.bikes.available / point.bikes.total) * 100;
-
-    return (
-      <Marker key={point.id} coordinate={point.location}>
-        <MarkerView>
-          <MarkerImage source={require('../assets/images/marker.png')} />
-          <PercentageView>
-            <PercentageCircle
-              borderWidth={3}
-              radius={15.5}
-              percent={percent}
-              innerColor={'#333'}
-              bgcolor={'#333'}
-              color={'#f00'}
-            >
-              <MarkerText>{point.bikes.available}</MarkerText>
-            </PercentageCircle>
-          </PercentageView>
-        </MarkerView>
-      </Marker>
-    );
+    return <MarkerComponent key={point.id} point={point} />;
   }
 
   private renderCluster(cluster, onPress) {
