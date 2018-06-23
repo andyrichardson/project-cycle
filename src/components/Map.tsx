@@ -77,13 +77,21 @@ export class MapComponent extends React.Component<
 
   private get data() {
     return this.props.points.results.map((point, index) => ({
+      bikes: point.bikes,
       id: index,
-      location: { latitude: point.lat, longitude: point.lon }
+      location: point.location
     }));
   }
 
-  private renderMarker(point) {
-    return <Marker key={point.id} coordinate={point.location} />;
+  private renderMarker(point: BikePoint) {
+    return (
+      <Marker key={point.id} coordinate={point.location}>
+        <MarkerView>
+          <MarkerImage source={require('../assets/images/marker.png')} />
+          <MarkerText>{point.bikes.available}</MarkerText>
+        </MarkerView>
+      </Marker>
+    );
   }
 
   private renderCluster(cluster, onPress) {
@@ -129,4 +137,21 @@ const ClusterText = styled.Text`
   color: #f00;
   font-size: 12px;
   font-weight: 600;
+`;
+
+const MarkerView = styled.View``;
+
+const MarkerImage = styled.Image`
+  width: 70px;
+  height: 70px;
+`;
+
+const MarkerText = styled.Text`
+  color: #fff;
+  font-size: 12px;
+  left: 0;
+  position: absolute;
+  right: 0;
+  text-align: center;
+  top: 17px;
 `;
