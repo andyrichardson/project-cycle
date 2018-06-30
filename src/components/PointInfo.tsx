@@ -8,8 +8,16 @@ export class PointInfoComponent extends React.Component<
   public render() {
     return (
       <PointInfoView>
-        {this.percentage()}
-        <PointTitle>{this.props.point.name}</PointTitle>
+        <TopRowView>
+          {this.percentage()}
+          <InfoView>
+            <PointTitle>{this.props.point.name}</PointTitle>
+            <SubtextView>
+              <InfoSubtext>{this.bikes.available} Bikes</InfoSubtext>
+              <InfoSubtext>{this.bikes.spaces} Spaces</InfoSubtext>
+            </SubtextView>
+          </InfoView>
+        </TopRowView>
       </PointInfoView>
     );
   }
@@ -18,23 +26,62 @@ export class PointInfoComponent extends React.Component<
     return (
       <PercentageCircle
         borderWidth={3}
-        radius={15.5}
+        radius={20}
         percent={20}
-        innerColor={'#333'}
-        bgcolor={'#333'}
+        innerColor={'#fff'}
+        bgcolor={'#eee'}
         color={'#f00'}
-      />
+      >
+        <PercentageText>{this.props.point.bikes.available}</PercentageText>
+      </PercentageCircle>
     );
+  }
+
+  private get bikes() {
+    return {
+      available: this.props.point.bikes.available,
+      spaces: this.props.point.bikes.total - this.props.point.bikes.available
+    };
   }
 }
 
 const PointInfoView = styled.View`
   background: #fff;
+  border-radius: 4px;
   bottom: 20px;
-  height: 200px;
   left: 20px;
+  padding: 20px;
   position: absolute;
   right: 20px;
+  elevation: 2;
 `;
 
-const PointTitle = styled.Text``;
+const TopRowView = styled.View`
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+`;
+
+const InfoView = styled.View`
+  margin-left: 15px;
+`;
+
+const SubtextView = styled.View`
+  display: flex;
+  flex-direction: row;
+`;
+
+const InfoSubtext = styled.Text`
+  margin-right: 10px;
+`;
+
+const PointTitle = styled.Text`
+  color: #444;
+  font-size: 18px;
+  flex-wrap: wrap;
+  margin-bottom: 5px;
+`;
+
+const PercentageText = styled.Text`
+  text-align: center;
+`;
