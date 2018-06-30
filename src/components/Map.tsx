@@ -5,12 +5,14 @@ import PercentageCircle from 'react-native-percentage-circle';
 import Permissions from 'react-native-permissions';
 import styled from 'styled-components/native';
 import { MarkerComponent } from './Marker';
+import { PointInfoComponent } from './PointInfo';
 
 export class MapComponent extends React.Component<
   MapComponentProps,
   MapComponentState
 > {
   public state: MapComponentState = {
+    activePoint: null,
     error: null,
     latitude: undefined,
     longitude: undefined
@@ -27,26 +29,32 @@ export class MapComponent extends React.Component<
     }
 
     return (
-      <MapView
-        style={{
-          bottom: 0,
-          left: 0,
-          position: 'absolute',
-          right: 0,
-          top: 0
-        }}
-        provider={'google'}
-        data={this.data}
-        initialRegion={this.region}
-        renderMarker={this.renderMarker}
-        renderCluster={this.renderCluster}
-        radius={50}
-        maxZoom={200}
-        showsCompass={true}
-        showsUserLocation={true}
-        loadingEnabled={true}
-        followsUserLocation={true}
-      />
+      <ComponentView>
+        <MapView
+          style={{
+            bottom: 0,
+            left: 0,
+            position: 'absolute',
+            right: 0,
+            top: 0
+          }}
+          provider={'google'}
+          data={this.data}
+          initialRegion={this.region}
+          renderMarker={this.renderMarker}
+          renderCluster={this.renderCluster}
+          radius={50}
+          maxZoom={200}
+          showsCompass={true}
+          showsUserLocation={true}
+          loadingEnabled={true}
+          followsUserLocation={true}
+        />
+
+        {this.state.activePoint !== null && (
+          <PointInfoComponent point={this.state.activePoint} />
+        )}
+      </ComponentView>
     );
   }
 
@@ -77,20 +85,26 @@ export class MapComponent extends React.Component<
     };
   }
 
-  private get data() {
+  private get data(): MarkerData[] {
     return this.props.points.results.map((point, index) => ({
-      bikes: point.bikes,
       id: index,
-      location: point.location
+      location: point.location,
+      point
     }));
   }
 
-  private renderMarker(point: BikePoint) {
-    const percent = (point.bikes.available / point.bikes.total) * 100;
-    return <MarkerComponent key={point.id} point={point} />;
-  }
+  private renderMarker = (data: MarkerData) => {
+    const percent = (data.point.bikes.available / data.point.bikes.total) * 100;
+    return (
+      <MarkerComponent
+        key={data.id}
+        point={data.point}
+        onPress={this.onPointPress}
+      />
+    );
+  };
 
-  private renderCluster(cluster, onPress) {
+  private renderCluster = (cluster, onPress) => {
     const { pointCount, coordinate } = cluster;
 
     return (
@@ -100,7 +114,7 @@ export class MapComponent extends React.Component<
         </ClusterView>
       </Marker>
     );
-  }
+  };
 
   private updatePosition(position: Position): void {
     this.setState({
@@ -109,6 +123,10 @@ export class MapComponent extends React.Component<
       longitude: position.coords.longitude
     });
   }
+
+  private onPointPress = (point: BikePoint) => {
+    this.setState({ activePoint: point });
+  };
 
   private navigationError(error) {
     this.setState({ ...this.state, error });
@@ -135,21 +153,6 @@ const ClusterText = styled.Text`
   font-weight: 600;
 `;
 
-const MarkerView = styled.View``;
-
-const MarkerImage = styled.Image`
-  width: 70px;
-  height: 70px;
-`;
-
-const MarkerText = styled.Text`
-  color: #fff;
-  font-size: 12px;
-  text-align: center;
-`;
-
-const PercentageView = styled.View`
-  position: absolute;
-  left: 19.5px;
-  top: 10.5px;
+const ComponentView = styled.View`
+  height: 100%;
 `;
