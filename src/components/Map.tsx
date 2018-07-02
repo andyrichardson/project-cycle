@@ -13,6 +13,7 @@ export class MapComponent extends React.Component<
 > {
   public state: MapComponentState = {
     activePoint: null,
+    activePointVisible: true,
     error: null,
     latitude: undefined,
     longitude: undefined
@@ -51,9 +52,11 @@ export class MapComponent extends React.Component<
           followsUserLocation={true}
           onPress={this.onMapPress}
         />
-
         {this.state.activePoint !== null && (
-          <PointInfoComponent point={this.state.activePoint} />
+          <PointInfoComponent
+            point={this.state.activePoint}
+            visible={this.state.activePointVisible}
+          />
         )}
       </ComponentView>
     );
@@ -126,11 +129,11 @@ export class MapComponent extends React.Component<
   }
 
   private onMarkerPress = (point: BikePoint) => {
-    this.setState({ activePoint: point });
+    this.setState({ activePoint: point, activePointVisible: true });
   };
 
   private onMapPress = () => {
-    this.setState({ activePoint: null });
+    this.setState({ activePointVisible: false });
   };
 
   private navigationError(error) {

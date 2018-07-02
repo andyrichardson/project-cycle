@@ -1,6 +1,7 @@
 /* MAP COMPONENT */
 interface MapComponentState {
   activePoint: BikePoint;
+  activePointVisible: boolean;
   error: string;
   latitude: number;
   longitude: number;
@@ -29,6 +30,11 @@ interface MarkerData {
 /* POINT INFO COMPONENT */
 interface PointInfoComponentProps {
   point: BikePoint;
+  visible: boolean;
+}
+
+interface PointInfoComponentState {
+  animation: any;
 }
 
 interface PermissionsMock {

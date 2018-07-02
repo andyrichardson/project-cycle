@@ -1,13 +1,24 @@
 import * as React from 'react';
+import { Animated } from 'react-native';
 import PercentageCircle from 'react-native-percentage-circle';
 import styled from 'styled-components/native';
 
 export class PointInfoComponent extends React.Component<
-  PointInfoComponentProps
+  PointInfoComponentProps,
+  PointInfoComponentState
 > {
+  public state: PointInfoComponentState = {
+    animation: new Animated.Value(150)
+  };
+
   public render() {
     return (
-      <PointInfoView>
+      <Animated.View
+        style={{
+          ...animationStyle,
+          transform: [{ translateY: this.state.animation }]
+        }}
+      >
         <TopRowView>
           {this.percentage()}
           <InfoView>
@@ -18,8 +29,30 @@ export class PointInfoComponent extends React.Component<
             </SubtextView>
           </InfoView>
         </TopRowView>
-      </PointInfoView>
+      </Animated.View>
     );
+  }
+
+  public componentDidMount() {
+    this.slideIn();
+  }
+
+  public componentDidUpdate(prevProps) {
+    this.props.visible ? this.slideIn() : this.slideOut();
+  }
+
+  private slideIn() {
+    Animated.timing(this.state.animation, {
+      duration: 200,
+      toValue: 0
+    }).start();
+  }
+
+  private slideOut() {
+    Animated.timing(this.state.animation, {
+      duration: 200,
+      toValue: 150
+    }).start();
   }
 
   private percentage() {
@@ -45,16 +78,16 @@ export class PointInfoComponent extends React.Component<
   }
 }
 
-const PointInfoView = styled.View`
-  background: #fff;
-  border-radius: 4px;
-  bottom: 20px;
-  left: 20px;
-  padding: 20px;
-  position: absolute;
-  right: 20px;
-  elevation: 2;
-`;
+const animationStyle = {
+  backgroundColor: '#fff',
+  borderRadius: 4,
+  bottom: 20,
+  elevation: 2,
+  left: 20,
+  padding: 20,
+  position: 'absolute',
+  right: 20
+};
 
 const TopRowView = styled.View`
   align-items: center;
