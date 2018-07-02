@@ -49,6 +49,7 @@ export class MapComponent extends React.Component<
           showsUserLocation={true}
           loadingEnabled={true}
           followsUserLocation={true}
+          onPress={this.onMapPress}
         />
 
         {this.state.activePoint !== null && (
@@ -99,7 +100,7 @@ export class MapComponent extends React.Component<
       <MarkerComponent
         key={data.id}
         point={data.point}
-        onPress={this.onPointPress}
+        onPress={this.onMarkerPress}
       />
     );
   };
@@ -124,8 +125,12 @@ export class MapComponent extends React.Component<
     });
   }
 
-  private onPointPress = (point: BikePoint) => {
+  private onMarkerPress = (point: BikePoint) => {
     this.setState({ activePoint: point });
+  };
+
+  private onMapPress = () => {
+    this.setState({ activePoint: null });
   };
 
   private navigationError(error) {

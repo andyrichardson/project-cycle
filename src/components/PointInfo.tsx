@@ -11,10 +11,10 @@ export class PointInfoComponent extends React.Component<
         <TopRowView>
           {this.percentage()}
           <InfoView>
-            <PointTitle>{this.props.point.name}</PointTitle>
+            <Title>{this.props.point.name}</Title>
             <SubtextView>
-              <InfoSubtext>{this.bikes.available} Bikes</InfoSubtext>
-              <InfoSubtext>{this.bikes.spaces} Spaces</InfoSubtext>
+              <Subtext>{this.bikes.available} Bikes</Subtext>
+              <Subtext>{this.bikes.spaces} Spaces</Subtext>
             </SubtextView>
           </InfoView>
         </TopRowView>
@@ -71,11 +71,11 @@ const SubtextView = styled.View`
   flex-direction: row;
 `;
 
-const InfoSubtext = styled.Text`
+const Subtext = styled.Text`
   margin-right: 10px;
 `;
 
-const PointTitle = styled.Text`
+const Title = styled.Text`
   color: #444;
   font-size: 18px;
   flex-wrap: wrap;
