@@ -46,7 +46,7 @@ export class MapComponent extends React.Component<
           renderCluster={this.renderCluster}
           radius={50}
           maxZoom={200}
-          showsCompass={true}
+          showsCompass={false}
           showsUserLocation={true}
           loadingEnabled={true}
           followsUserLocation={true}
