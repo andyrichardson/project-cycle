@@ -4,6 +4,7 @@ import * as ReactTestUtils from 'react-dom/test-utils';
 import * as TestRenderer from 'react-test-renderer';
 import App from './App';
 import { Login } from './Login';
+jest.mock('./actions');
 
 it('renders without crashing', () => {
   const rendered = TestRenderer.create(<App />).toJSON();

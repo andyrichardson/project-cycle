@@ -6,7 +6,7 @@ import styled from 'styled-components/native';
 export class MarkerComponent extends React.PureComponent<MarkerComponentProps> {
   public render() {
     return (
-      <Marker coordinate={this.props.point.location}>
+      <Marker coordinate={this.props.point.location} onPress={this.onPress}>
         <MarkerView>
           <MarkerImage source={require('../assets/images/marker.png')} />
           <PercentageView>
@@ -31,6 +31,10 @@ export class MarkerComponent extends React.PureComponent<MarkerComponentProps> {
       (this.props.point.bikes.available / this.props.point.bikes.total) * 100
     );
   }
+
+  private onPress = () => {
+    return this.props.onPress(this.props.point);
+  };
 }
 
 const MarkerView = styled.View``;
