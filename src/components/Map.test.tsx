@@ -145,7 +145,7 @@ describe('markers', () => {
     const instance = new MapComponent(props);
 
     // @ts-ignore
-    const marker = instance.renderMarker(props.points.results[0]);
+    const marker = instance.renderMarker({ point: props.points.results[0] });
     expect(marker.type).to.be.a('function');
   });
 });
