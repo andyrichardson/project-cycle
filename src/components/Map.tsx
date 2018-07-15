@@ -4,6 +4,7 @@ import MapView from 'react-native-maps-super-cluster';
 import PercentageCircle from 'react-native-percentage-circle';
 import Permissions from 'react-native-permissions';
 import styled from 'styled-components/native';
+import { Search } from '../containers/Search';
 import { MarkerComponent } from './Marker';
 import { PointInfoComponent } from './PointInfo';
 
@@ -35,7 +36,7 @@ export class MapComponent extends React.Component<
           style={{
             bottom: 0,
             left: 0,
-            position: 'absolute',
+            position: 'relative',
             right: 0,
             top: 0
           }}
@@ -44,14 +45,14 @@ export class MapComponent extends React.Component<
           initialRegion={this.region}
           renderMarker={this.renderMarker}
           renderCluster={this.renderCluster}
-          radius={50}
           maxZoom={200}
-          showsCompass={true}
+          radius={50}
           showsUserLocation={true}
           loadingEnabled={true}
           followsUserLocation={true}
           onPress={this.onMapPress}
         />
+        <Search />
         {this.state.activePoint !== null && (
           <PointInfoComponent
             point={this.state.activePoint}
@@ -61,6 +62,12 @@ export class MapComponent extends React.Component<
       </ComponentView>
     );
   }
+
+  // public componentDidUpdate() {
+  //   if (this.props.searchActive) {
+  //     this.setState({ activePoint: null });
+  //   }
+  // }
 
   public async componentDidMount() {
     let locPermission = await Permissions.check('location');

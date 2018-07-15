@@ -11,4 +11,9 @@ describe('rootReducer', () => {
     // @ts-ignore
     expect(rootReducer({}, {}).hasOwnProperty('points')).to.equal(true);
   });
+
+  it('returns a search property', () => {
+    // @ts-ignore
+    expect(rootReducer({}, {}).hasOwnProperty('search')).to.equal(true);
+  });
 });

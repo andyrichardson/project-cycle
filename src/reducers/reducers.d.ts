@@ -1,8 +1,6 @@
-interface PointState {
-  error: boolean;
-  lastUpdated: number;
-  fetching: boolean;
-  results: BikePoint[];
+interface ApplicationState {
+  points: PointState;
+  search: SearchState;
 }
 
 interface BikePoint {
@@ -25,8 +23,14 @@ interface BikePoint {
   };
 }
 
-interface RecievePointsAction {
-  data: BikePoint[];
-  receivedAt: number;
-  type: string;
+interface PointState {
+  error: boolean;
+  lastUpdated: number;
+  fetching: boolean;
+  results: BikePoint[];
+}
+
+interface SearchState {
+  active: boolean;
+  query: string;
 }

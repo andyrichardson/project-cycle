@@ -9,6 +9,7 @@ interface MapComponentState {
 
 interface MapComponentProps {
   points: PointState;
+  searchActive: boolean;
   updatePoints: () => any;
 }
 
@@ -40,4 +41,22 @@ interface PointInfoComponentState {
 interface PermissionsMock {
   check: jest.Mock;
   request: jest.Mock;
+}
+
+interface SearchComponentProps {
+  search: {
+    active: boolean;
+    query: string;
+    results: BikePoint[];
+  };
+  activateSearch: () => void;
+  deactivateSearch: () => void;
+  filterSearch: (query: string) => void;
+}
+
+interface SearchComponentState {
+  leftPosition: any;
+  maxHeight: any;
+  rightPosition: any;
+  topPosition: any;
 }
