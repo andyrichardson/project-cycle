@@ -4,38 +4,36 @@
   "private": true,
   "devDependencies": {
     "@types/chai": "^4.1.4",
-    "@types/jest": "^22.2.3",
-    "@types/react": "^16.1.0",
-    "@types/react-dom": "^16.0.5",
-    "@types/react-native": "^0.55.12",
+    "@types/jest": "^23.1.6",
+    "@types/react": "^16.4.6",
+    "@types/react-dom": "^16.0.6",
+    "@types/react-native": "^0.56.1",
     "@types/react-native-permissions": "^1.1.1",
-    "@types/react-navigation": "^1.5.12",
-    "@types/react-test-renderer": "^16.0.0",
+    "@types/react-navigation": "^2.0.11",
+    "@types/react-test-renderer": "^16.0.1",
+    "babel-preset-react-native": "^4.0.0",
     "chai": "^4.1.2",
-    "jest": "^23.1.0",
-    "prettier": "^1.12.1",
+    "jest": "^23.4.1",
+    "prettier": "^1.13.7",
     "prettier-check": "^2.0.0",
-    "react-dom": "^16.3.2",
-    "react-native-scripts-ts": "1.13.0",
-    "react-native-typescript-transformer": "^1.2.5",
-    "react-test-renderer": "16.3.2",
+    "react-dom": "^16.4.1",
+    "react-native-typescript-transformer": "^1.2.10",
+    "react-test-renderer": "16.4.1",
     "redux-mock-store": "^1.5.3",
-    "ts-jest": "^22.4.2",
-    "tslib": "^1.9.0",
+    "ts-jest": "^23.0.0",
+    "tslib": "^1.9.3",
     "tslint": "^5.10.0",
-    "tslint-config-prettier": "^1.12.0",
-    "typescript": "^2.8.1",
+    "tslint-config-prettier": "^1.13.0",
+    "typescript": "^2.9.2",
     "xmlhttprequest": "^1.8.0"
   },
-  "main": "./node_modules/react-native-scripts-ts/build/bin/crna-entry.js",
   "scripts": {
-    "start": "react-native start",
+    "start": "react-native start --config $(pwd)/rn-cli.config.js",
     "android": "react-native run-android --config $(pwd)/rn-cli.config.js",
     "ios": "react-native run-ios --config $(pwd)/rn-cli.config.js",
     "test": "jest",
     "lint": "tslint --project .",
-    "formatting": "prettier-check ./**/*.json ./**/*.tsx ./**/*.md",
-    "postinstall": "config/set-target.sh"
+    "formatting": "prettier-check ./**/*.json ./**/*.tsx ./**/*.md"
   },
   "jest": {
     "globals": {
@@ -67,17 +65,17 @@
     ]
   },
   "dependencies": {
-    "react": "16.3.2",
-    "react-native": "0.55.4",
+    "react": "16.4.1",
+    "react-native": "0.56.0",
     "react-native-config": "^0.11.5",
     "react-native-maps": "^0.21.0",
     "react-native-maps-super-cluster": "^1.4.1",
     "react-native-percentage-circle": "^1.0.7",
     "react-native-permissions": "^1.1.1",
-    "react-navigation": "^2.3.1",
+    "react-navigation": "^2.6.2",
     "react-redux": "^5.0.7",
     "redux": "^4.0.0",
     "redux-thunk": "^2.3.0",
-    "styled-components": "^3.2.6"
+    "styled-components": "^3.3.3"
   }
 }
