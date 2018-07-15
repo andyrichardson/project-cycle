@@ -14,9 +14,9 @@ describe('initialize', () => {
     store = mockStore({
       points: { results: [] },
       search: {
-        active: false
-
-query: ''      }
+        active: false,
+        query: ''
+      }
     });
   });
 
@@ -89,7 +89,9 @@ describe('dispatchToProps', () => {
   it('deactivateSearch', () => {
     TestRenderer.create(<Search store={store} />).toJSON();
 
-    expect(SearchComponent.mock.calls[0][0].deactivateSearch).to.be.a('function');
+    expect(SearchComponent.mock.calls[0][0].deactivateSearch).to.be.a(
+      'function'
+    );
   });
 
   it('filterSearch', () => {
