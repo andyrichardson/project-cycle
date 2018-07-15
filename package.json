@@ -16,7 +16,6 @@
     "prettier": "^1.12.1",
     "prettier-check": "^2.0.0",
     "react-dom": "^16.3.2",
-    "react-native-scripts-ts": "1.13.0",
     "react-native-typescript-transformer": "^1.2.5",
     "react-test-renderer": "16.3.2",
     "redux-mock-store": "^1.5.3",
