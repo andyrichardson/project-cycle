@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import { initialState, setActive, setInactive } from './search';
+import { initialState, searchReducer, setActive, setInactive } from './search';
 
 describe('initialState', () => {
   it('is an object', () => {
@@ -16,6 +16,12 @@ describe('initialState', () => {
 
   it('results is empty array ', () => {
     expect(initialState.results).to.deep.equal([]);
+  });
+});
+
+describe('searchReducer', () => {
+  it('should be a function', () => {
+    expect(searchReducer).to.be.a('function');
   });
 });
 
