@@ -1,3 +1,0 @@
-interface ApplicationState {
-  points: PointState;
-}
