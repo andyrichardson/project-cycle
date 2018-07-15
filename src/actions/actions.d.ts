@@ -3,3 +3,8 @@ interface RecievePointsAction {
   receivedAt: number;
   type: string;
 }
+
+interface FilterSearchAction {
+  query: string;
+  type: string;
+}

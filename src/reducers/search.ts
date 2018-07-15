@@ -3,8 +3,7 @@ import { createReducer } from './create';
 
 export const initialState: SearchState = {
   active: false,
-  query: '',
-  results: []
+  query: ''
 };
 
 export const activateSearch = (state: SearchState): SearchState => {
@@ -20,7 +19,18 @@ export const deactivateSearch = (state: SearchState): SearchState => {
   };
 };
 
+export const filterSearch = (
+  state: SearchState,
+  action: FilterSearchAction
+) => {
+  return {
+    ...state,
+    query: action.query
+  };
+};
+
 export const searchReducer = createReducer(initialState, {
   ACTIVATE_SEARCH: activateSearch,
-  DEACTIVATE_SEARCH: deactivateSearch
+  DEACTIVATE_SEARCH: deactivateSearch,
+  FILTER_SEARCH: filterSearch
 });

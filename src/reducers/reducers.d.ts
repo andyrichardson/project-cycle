@@ -33,5 +33,4 @@ interface PointState {
 interface SearchState {
   active: boolean;
   query: string;
-  results: BikePoint[];
 }

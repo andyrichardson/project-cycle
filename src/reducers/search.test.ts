@@ -1,9 +1,10 @@
 import { expect } from 'chai';
 import {
-  initialState,
-  searchReducer,
   activateSearch,
-  deactivateSearch
+  deactivateSearch,
+  filterSearch,
+  initialState,
+  searchReducer
 } from './search';
 
 describe('initialState', () => {
@@ -17,10 +18,6 @@ describe('initialState', () => {
 
   it('query is empty string', () => {
     expect(initialState.query).to.equal('');
-  });
-
-  it('results is empty array ', () => {
-    expect(initialState.results).to.deep.equal([]);
   });
 });
 
@@ -53,12 +50,15 @@ describe('deactivateSearch', () => {
 
     expect(result.query).to.equal('');
   });
+});
 
-  it('clears the results', () => {
-    const state = { ...initialState, results: [{}, {}] };
+describe('filterSearch', () => {
+  it('adds query to state', () => {
+    const query = 'testquery';
+    const state = { ...initialState };
     // @ts-ignore
-    const result = deactivateSearch(state);
+    const result = filterSearch(state, { query });
 
-    expect(result.results).to.deep.equal([]);
+    expect(result.query).to.equal(query);
   });
 });
