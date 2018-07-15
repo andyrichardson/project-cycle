@@ -1,4 +1,4 @@
-import { SET_ACTIVE, SET_INACTIVE } from '../actions';
+import { ACTIVATE_SEARCH, DEACTIVATE_SEARCH } from '../actions';
 import { createReducer } from './create';
 
 export const initialState: SearchState = {
@@ -7,20 +7,20 @@ export const initialState: SearchState = {
   results: []
 };
 
-export const setActive = (state: SearchState): SearchState => {
+export const activateSearch = (state: SearchState): SearchState => {
   return {
     ...state,
     active: true
   };
 };
 
-export const setInactive = (state: SearchState): SearchState => {
+export const deactivateSearch = (state: SearchState): SearchState => {
   return {
     ...initialState
   };
 };
 
 export const searchReducer = createReducer(initialState, {
-  SET_ACTIVE: setActive,
-  SET_INACTIVE: setInactive
+  ACTIVATE_SEARCH: activateSearch,
+  DEACTIVATE_SEARCH: deactivateSearch
 });

@@ -1,14 +1,19 @@
 import { expect } from 'chai';
-import { SET_ACTIVE, SET_INACTIVE, setActive, setInactive } from './search';
+import {
+  ACTIVATE_SEARCH,
+  DEACTIVATE_SEARCH,
+  activateSearch,
+  deactivateSearch
+} from './search';
 
-describe('setActive', () => {
-  it('returns type SET_ACTIVE', () => {
-    expect(setActive()).to.deep.equal({ type: SET_ACTIVE });
+describe('activateSearch', () => {
+  it('returns type ACTIVATE_SEARCH', () => {
+    expect(activateSearch()).to.deep.equal({ type: ACTIVATE_SEARCH });
   });
 });
 
-describe('setInactive', () => {
-  it('returns type SET_ACTIVE', () => {
-    expect(setInactive()).to.deep.equal({ type: SET_INACTIVE });
+describe('deactivateSearch', () => {
+  it('returns type ACTIVATE_SEARCH', () => {
+    expect(deactivateSearch()).to.deep.equal({ type: DEACTIVATE_SEARCH });
   });
 });

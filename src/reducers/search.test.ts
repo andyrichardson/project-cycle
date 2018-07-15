@@ -1,5 +1,10 @@
 import { expect } from 'chai';
-import { initialState, searchReducer, setActive, setInactive } from './search';
+import {
+  initialState,
+  searchReducer,
+  activateSearch,
+  deactivateSearch
+} from './search';
 
 describe('initialState', () => {
   it('is an object', () => {
@@ -25,26 +30,26 @@ describe('searchReducer', () => {
   });
 });
 
-describe('setActive', () => {
+describe('activateSearch', () => {
   it('sets active = true', () => {
     const state = initialState;
-    const result = setActive(state);
+    const result = activateSearch(state);
 
     expect(result.active).to.equal(true);
   });
 });
 
-describe('setInactive', () => {
+describe('deactivateSearch', () => {
   it('sets active = true', () => {
     const state = { ...initialState, active: true };
-    const result = setInactive(state);
+    const result = deactivateSearch(state);
 
     expect(result.active).to.equal(false);
   });
 
   it('clears the query string', () => {
     const state = { ...initialState, query: '1234' };
-    const result = setInactive(state);
+    const result = deactivateSearch(state);
 
     expect(result.query).to.equal('');
   });
@@ -52,7 +57,7 @@ describe('setInactive', () => {
   it('clears the results', () => {
     const state = { ...initialState, results: [{}, {}] };
     // @ts-ignore
-    const result = setInactive(state);
+    const result = deactivateSearch(state);
 
     expect(result.results).to.deep.equal([]);
   });

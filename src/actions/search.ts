@@ -1,10 +1,10 @@
-export const SET_ACTIVE = 'SET_ACTIVE';
-export const SET_INACTIVE = 'SET_INACTIVE';
+export const ACTIVATE_SEARCH = 'ACTIVATE_SEARCH';
+export const DEACTIVATE_SEARCH = 'DEACTIVATE_SEARCH';
 
-export const setActive = () => ({
-  type: SET_ACTIVE
+export const activateSearch = () => ({
+  type: ACTIVATE_SEARCH
 });
 
-export const setInactive = () => ({
-  type: SET_INACTIVE
+export const deactivateSearch = () => ({
+  type: DEACTIVATE_SEARCH
 });
