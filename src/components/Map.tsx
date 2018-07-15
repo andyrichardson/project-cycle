@@ -63,6 +63,12 @@ export class MapComponent extends React.Component<
     );
   }
 
+  // public componentDidUpdate() {
+  //   if (this.props.searchActive) {
+  //     this.setState({ activePoint: null });
+  //   }
+  // }
+
   public async componentDidMount() {
     let locPermission = await Permissions.check('location');
 

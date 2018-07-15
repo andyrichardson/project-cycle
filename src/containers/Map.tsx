@@ -3,7 +3,10 @@ import { Dispatch } from 'redux';
 import { updatePoints } from '../actions';
 import { MapComponent } from '../components';
 
-const mapStateToProps = (state: ApplicationState) => ({ points: state.points });
+const mapStateToProps = (state: ApplicationState) => ({
+  points: state.points,
+  searchActive: state.search.active
+});
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
   updatePoints: () => updatePoints(dispatch)

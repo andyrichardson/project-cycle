@@ -9,6 +9,7 @@ interface MapComponentState {
 
 interface MapComponentProps {
   points: PointState;
+  searchActive: boolean;
   updatePoints: () => any;
 }
 
@@ -43,9 +44,14 @@ interface PermissionsMock {
 }
 
 interface SearchComponentProps {
-  search: SearchState;
+  search: {
+    active: boolean;
+    query: string;
+    results: BikePoint[];
+  };
   activateSearch: () => void;
   deactivateSearch: () => void;
+  filterSearch: (query: string) => void;
 }
 
 interface SearchComponentState {

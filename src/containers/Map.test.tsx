@@ -12,7 +12,10 @@ describe('initialize', () => {
 
   beforeEach(() => {
     store = mockStore({
-      points: []
+      points: [],
+      search: {
+        active: false
+      }
     });
   });
 

@@ -26,12 +26,15 @@ export class SearchComponent extends React.Component<
         }}
       >
         <SearchInput
+          onChangeText={this.updateSearchText}
           onFocus={this.props.activateSearch}
           placeholder={'Find a location'}
-          value={''}
+          value={this.props.search.query}
           underlineColorAndroid={'rgba(0,0,0,0)'}
           ref={'searchInput'}
         />
+
+        {this.searchResults()}
       </Animated.View>
     );
   }
@@ -89,6 +92,18 @@ export class SearchComponent extends React.Component<
     this.refs.searchInput.root.blur();
     return true;
   };
+
+  private searchResults() {
+    return this.props.search.results.map(point => (
+      <SearchResult key={point.id}>
+        <SearchResultText>{point.name}</SearchResultText>
+      </SearchResult>
+    ));
+  }
+
+  private updateSearchText = (query: string) => {
+    this.props.filterSearch(query);
+  };
 }
 
 const animationStyle = {
@@ -106,4 +121,13 @@ const SearchInput = styled.TextInput`
   border-radius: 4;
   padding: 17px 20px;
   width: 100%;
+`;
+
+const SearchResult = styled.TouchableHighlight`
+  padding: 20px;
+  width: 100%;
+`;
+
+const SearchResultText = styled.Text`
+  font-size: 16px;
 `;
