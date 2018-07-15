@@ -26,15 +26,13 @@
     "typescript": "^2.9.2",
     "xmlhttprequest": "^1.8.0"
   },
-  "main": "./node_modules/react-native-scripts-ts/build/bin/crna-entry.js",
   "scripts": {
-    "start": "react-native start",
+    "start": "react-native start --config $(pwd)/rn-cli.config.js",
     "android": "react-native run-android --config $(pwd)/rn-cli.config.js",
     "ios": "react-native run-ios --config $(pwd)/rn-cli.config.js",
     "test": "jest",
     "lint": "tslint --project .",
-    "formatting": "prettier-check ./**/*.json ./**/*.tsx ./**/*.md",
-    "postinstall": "config/set-target.sh"
+    "formatting": "prettier-check ./**/*.json ./**/*.tsx ./**/*.md"
   },
   "jest": {
     "globals": {
