@@ -17,4 +17,4 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
       - run: npm run lint
       - run: npm run formatting
-      - run: npm run test
+      - run: npx jest --coverage && cat coverage/lcov.info | npx coveralls
