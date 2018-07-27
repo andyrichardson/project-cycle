@@ -14,9 +14,9 @@ describe('initialize', () => {
     store = mockStore({
       points: { results: [] },
       search: {
-        active: false
-
-query: ''      }
+        active: false,
+        query: '',
+      }
     });
   });
 
