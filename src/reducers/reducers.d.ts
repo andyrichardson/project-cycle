@@ -1,4 +1,5 @@
 interface ApplicationState {
+  markers: MarkerState;
   points: PointState;
   search: SearchState;
 }
@@ -21,6 +22,11 @@ interface BikePoint {
     available: number;
     total: number;
   };
+}
+
+interface MarkerState {
+  active: number;
+  markers: Map<number, import('react-native-maps').Marker>;
 }
 
 interface PointState {

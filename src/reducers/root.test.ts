@@ -7,6 +7,11 @@ describe('rootReducer', () => {
     expect(rootReducer({}, {})).to.be.an('object');
   });
 
+  it('returns a markers property', () => {
+    // @ts-ignore
+    expect(rootReducer({}, {}).hasOwnProperty('markers')).to.equal(true);
+  });
+
   it('returns a points property', () => {
     // @ts-ignore
     expect(rootReducer({}, {}).hasOwnProperty('points')).to.equal(true);
