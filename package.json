@@ -10,7 +10,7 @@
     "@types/react-native": "0.56.3",
     "@types/react-native-permissions": "1.1.1",
     "@types/react-navigation": "2.0.11",
-    "@types/react-test-renderer": "16.0.1",
+    "@types/react-test-renderer": "16.0.2",
     "babel-preset-react-native": "4.0.0",
     "chai": "4.1.2",
     "jest": "23.4.1",
