@@ -5,24 +5,24 @@
   "devDependencies": {
     "@babel/runtime": "^7.1.2",
     "@types/chai": "4.1.6",
-    "@types/jest": "23.3.2",
-    "@types/react": "16.4.14",
+    "@types/jest": "23.3.3",
+    "@types/react": "16.4.15",
     "@types/react-dom": "16.0.8",
-    "@types/react-native": "0.57.0",
+    "@types/react-native": "0.57.2",
     "@types/react-native-permissions": "1.1.1",
-    "@types/react-navigation": "2.0.23",
-    "@types/react-test-renderer": "16.0.2",
+    "@types/react-navigation": "2.0.24",
+    "@types/react-test-renderer": "16.0.3",
     "chai": "4.2.0",
     "jest": "23.6.0",
-    "metro-react-native-babel-preset": "^0.47.0",
+    "metro-react-native-babel-preset": "^0.48.0",
     "prettier": "1.14.3",
     "prettier-check": "2.0.0",
     "react-dom": "16.5.2",
     "react-native-typescript-transformer": "1.2.10",
     "react-test-renderer": "16.5.2",
     "redux-mock-store": "1.5.3",
-    "schedule": "^0.4.0",
-    "ts-jest": "23.10.2",
+    "schedule": "^0.5.0",
+    "ts-jest": "23.10.4",
     "tslib": "1.9.3",
     "tslint": "5.11.0",
     "tslint-config-prettier": "1.15.0",
@@ -38,11 +38,6 @@
     "formatting": "prettier-check ./**/*.json ./**/*.tsx ./**/*.md"
   },
   "jest": {
-    "globals": {
-      "ts-jest": {
-        "useBabelrc": true
-      }
-    },
     "moduleFileExtensions": [
       "ts",
       "tsx",
@@ -60,6 +55,7 @@
       "**/?(*.)(spec|test).[tj]s?(x)"
     ],
     "transform": {
+      "^.+\\.js$": "<rootDir>/node_modules/react-native/jest/preprocessor.js",
       "^.+\\.tsx?$": "ts-jest"
     },
     "transformIgnorePatterns": [
@@ -68,10 +64,10 @@
   },
   "dependencies": {
     "react": "16.5.2",
-    "react-native": "0.57.1",
+    "react-native": "0.57.2",
     "react-native-config": "0.11.5",
     "react-native-maps": "0.21.0",
-    "react-native-maps-super-cluster": "1.4.1",
+    "react-native-maps-super-cluster": "1.5.0",
     "react-native-percentage-circle": "1.0.7",
     "react-native-permissions": "1.1.1",
     "react-navigation": "2.17.0",
